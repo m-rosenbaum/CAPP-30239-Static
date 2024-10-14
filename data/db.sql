@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS unemp;
 
 CREATE TABLE ui_demos (
     st varchar(2) NOT NULL,
-    dt date NOT NULL,
     dt_m int NOT NULL,
     dt_y int NOT NULL,
     gen_mal int,
@@ -32,7 +31,6 @@ CREATE TABLE ui_demos (
 
 CREATE TABLE ui_cts (
     st varchar(2) NOT NULL,
-    dt date NOT NULL,
     dt_m int NOT NULL,
     dt_y int NOT NULL,
     wk_num Int,

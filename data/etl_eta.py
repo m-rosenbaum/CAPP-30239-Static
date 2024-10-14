@@ -40,6 +40,7 @@ def clean_eta_203(file: str, names: dict) -> pl.DataFrame:
     df = df.with_columns(
         pl.col("dt").dt.month().alias("dt_m"), pl.col("dt").dt.year().alias("dt_y")
     )
+    df = df.drop("dt")
 
     # Return file
     return df
@@ -139,9 +140,39 @@ def make_db(db: str, schema: str) -> None:
     c.close()
 
 
-def load_data(file, str) -> None:
-    """ """
-    pass
+def load_data(db: str, df: pl.DataFrame, table: str) -> None:
+    """
+    Write a Polars dataframe into a database with inserting only new columns.
+
+    Input:
+        db (str): Path to database
+        df (pl.DataFrame): Polars dataframe to write to
+        table (str): Name of the table to write to.
+
+    Output: None, writes to database in input
+    """
+    # Create a new connection to a databse
+    path = pathlib.Path(f"{db}")
+    conn = sqlite3.connect(path)
+    c = conn.cursor()
+
+    # Build parameter lists
+    keys = []
+    params = []
+    for key in df.columns:
+        keys.append(f"{key}")
+        params.append(f":{key}")  # sqlit3 package uses :name to specify a col
+
+    # Create query to write line by line
+    query = f"INSERT OR IGNORE INTO {table} ({', '.join(keys)}) VALUES ({', '.join(params)})"
+    print(f"{query}")
+
+    # Write file
+    c.executemany(query, df.rows(named=True))
+    conn.commit()
+
+    # Commit and close
+    conn.close()
 
 
 #######################################
@@ -177,5 +208,5 @@ if __name__ == "__main__":
     if not path_db.is_file():
         print("Made it")
         make_db(DB, SCHEMA)
-    load_data(df_203, "ui_demos")
-    load_data(df_539, "ui_cts")
+    load_data(DB, df_203, "ui_demos")
+    load_data(DB, df_539, "ui_cts")
