@@ -27,6 +27,7 @@ def clean_eta_203(file: str, names: dict) -> pl.DataFrame:
 
      Input:
         -file (str): Path to location of the ETA 203 file
+        -names (dict): Column names to rename
 
     Output: df (pl.DataFrame): transformed 203 to post to database
     """

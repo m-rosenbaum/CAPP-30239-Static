@@ -53,17 +53,9 @@ CREATE TABLE unemp (
     st varchar(2) NOT NULL,
     dt_m int NOT NULL,
     dt_y int NOT NULL,
-    ct_u1 int,
-    ct_u2 int,
     ct_u3 int, 
-    ct_u4 int, 
-    ct_u5 int, 
     ct_u6 int,
-    ct_lf_u1 int,
-    ct_lf_u2 int,
     ct_lf_u3 int, 
-    ct_lf_u4 int, 
-    ct_lf_u5 int, 
     ct_lf_u6 int,
     PRIMARY KEY (st, dt_m, dt_y)
 );
