@@ -166,7 +166,6 @@ def load_data(db: str, df: pl.DataFrame, table: str) -> None:
 
     # Create query to write line by line
     query = f"INSERT OR IGNORE INTO {table} ({', '.join(keys)}) VALUES ({', '.join(params)})"
-    print(f"{query}")
 
     # Write file
     c.executemany(query, df.rows(named=True))

@@ -110,6 +110,6 @@ def clean_cps(file: str) -> pl.DataFrame:
     # Ref: Chat-GPT to figure out the polars casting names
     # Recast values and rename
     df = df.with_columns(pl.col("gestfips").cast(pl.Utf8).replace(STATES))
-    df.rename({"gestfips": "st", "hrmonth": "dt_m", "hryear4": "dt_y"})
+    df = df.rename({"gestfips": "st", "hrmonth": "dt_m", "hryear4": "dt_y"})
 
     return df
