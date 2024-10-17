@@ -15,22 +15,18 @@ KEEPVARS = [
     "pemlr",
     "pedwwnto",
     "pehrftpt",  # UI Vars
-    "gtco",
-    "gtcbsa",  # Urbanicity
-    "prtage",
     "pemaritl",
     "pesex",
+    "perace",
     "peeduca",
-    "ptdtrace",
-    "prdthsp",
-    "pehspnon",
     "prcitshp",
     "pudis",  # Demographics
     "hwhhwgt",
     "pwsswgt",
     "pwcmpwgt",
     "hrintsta",  # Weights
-]
+]  # Not in <2014: "prtage", "prdthsp", "pehspnon"," "gtco", "gtcbsa", "ptdtrace",  # Urbanicity
+# <2014: has peage, perace, prhspnon
 STATES_PATH = pathlib.Path(__file__).parent / "st_fips.json"
 STATES = json.load(open(STATES_PATH))
 
@@ -50,7 +46,21 @@ def clean_cps(file: str) -> pl.DataFrame:
     Output: df (pl.DataFrame): transfored CPS DataFrame
     """
     # Load file, and read 10,000 lines in to capture int / float
-    df = pl.read_csv(file, infer_schema_length=10000).select(KEEPVARS)
+    df = pl.read_csv(file, infer_schema_length=1000000)
+
+    # Handle different race choices
+    try:
+        df = df.select(KEEPVARS)
+        df = df.rename({"perace": "ptdtrace"})  # TODO: Check encoding
+    except:
+        try:
+            # Modify list to remove element and try
+            mod_keep = KEEPVARS.copy()
+            mod_keep.remove("perace")
+            mod_keep.append("ptdtrace")
+            df = df.select(mod_keep)
+        except Exception as e:
+            raise
 
     # Remove non-interviews
     df = df.filter(~df["hrintsta"].is_in([2, 3, 4]))

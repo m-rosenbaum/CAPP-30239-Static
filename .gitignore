@@ -136,4 +136,4 @@ dmypy.json
 cython_debug/
 
 # DB
-data/ui_stats.db
+*.db
