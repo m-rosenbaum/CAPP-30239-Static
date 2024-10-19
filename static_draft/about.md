@@ -25,6 +25,7 @@ I am developing 9 plots across 2 categories.
 ### Why does recipiency not make sense?
 5. (Line plot, with colored top): Zoom in on COVID and states and show that recipiency jumps way above 100% during COVID. By extending the graph into 2020-2023, the rates fully stop making sense, because more than 100% of eligible people start receiving benefits.
 6. (Bar and line plot) Calculation of rates. This aims to visualize how the recipiency rate is calculated by showing a line of the number of insured unemployed and the U-3 unemployed counts at the federal level. It takes the mean value across a time point of the U-3 rate and then divides a different time point to generate a range, resulting in a percentage.
+    - This may be cut depending on data difficulties as it relies on the ETA-539 report with suspect data.
 7. (Line graph): Show the states lines again in a different color, using the Bell et. al., 2021 preferred metric to better show what happens. I'll include a colored dot at the end (just 12/2022) to highlight the point in Chart 8.
 8. (Lollipop plots showing change): Alternative formulation lollipop for each state, showing the change at 12/2022 between the two metrics. 
 9. (Chloropleth sqaures map) Mapping recipiency compared to average across the country to start to introduce geographic variation. It shows that some of the difference is related to different states. This loosely maps onto political leaning, so will be obviously interpretable, but I will not plot political leaning.
