@@ -9,9 +9,9 @@ My goal has drastically reduced in scope. I still intend to describe why recipie
 ## Are there data challenges you are facing? Are you currently depending on mock data?
 Yes. Getting in data has been a problem to start with as the data that I scraped from DOL in the past changed in format slightly. This put me a little behind.
 
-This was exacerbated when I found today that the recipiency rate values reported in the ETA-539 report does not actually make sense (>100%, does not match the online tool that DOL releases recipiency data with). I'm planning on downloading and merging in the flat file interactive tool data as it's pretty central to the point I'm making and then describing the graphs.
+This was exacerbated when I found today that the recipiency rate values reported in the ETA-539 report does not actually make sense (>100%, does not match the online tool that DOL releases recipiency data with). I'm planning on downloading and merging in the flat file of recipiency rates from the interactive tool as it's pretty central to the point I'm making. 
 
-In the meantime, I'm not mocking up the data yet, and will push the plots before the end of the weekend.
+In the meantime, I'm not mocking making up mock data yet, and will push the plots before the end of the weekend.
 
 ## Describe each of the provided images with 2-3 sentences to give the context and how it relates to your goal.
 I am developing 9 plots across 2 categories.
