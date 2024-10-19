@@ -11,6 +11,7 @@ import sys
 PATHS = (
     "G:/My Drive/CAPP/2025_Q1_CAPP 30239/Data/ar203.csv",
     "G:/My Drive/CAPP/2025_Q1_CAPP 30239/Data/ar539.csv",
+    "G:/My Drive/CAPP/2025_Q1_CAPP 30239/Data/UI Data Dashboard.xlsx",
 )
 SCHEMA = "C:/Users/micha/Documents/CAPP/CAPP-30239/CAPP-30239-Static/Data/db.sql"
 DB = "C:/Users/micha/Documents/CAPP/CAPP-30239/CAPP-30239-Static/Data/ui_stats.db"
@@ -95,6 +96,51 @@ def clean_eta_539(file: str, names: dict) -> pl.DataFrame:
         pl.col(r"^(rt)_.*$").mean(),
     )
 
+    return df
+
+
+def clean_tcf_data(file: str) -> pl.DataFrame:
+    """
+    Takes in The Century Foundation (TCF) UI Data Dashboard and converts it
+    into a polar dataframe
+
+    Input:
+        - file (str): Path to Excel file
+
+    Returns (pl.dataframe) to load into the db
+    """
+    # Read Excel
+    df = pl.read_excel(file, sheet_name="Back End Recipiency Rate")
+
+    # Remove extraneous rows and columns
+    df = (
+        df.filter(
+            (pl.col("rptdate") != pl.date(year=2024, month=9, day=30))
+            & (pl.col("st") != "US (avg)")
+        )
+        .select(
+            "st",
+            "rptdate",
+            "unemployed_avg",
+            "reg_total_week_mov_avg",
+            "recipiency_annual_reg",
+        )
+        .rename(
+            {
+                "rptdate": "date",
+                "unemployed_avg": "ct_u3_12mo",
+                "reg_total_week_mov_avg": "ct_wks_12mo",
+                "recipiency_annual_reg": "rt_recip",
+            }
+        )
+        .with_columns(
+            pl.col("date").dt.year().alias("dt_y"),
+            pl.col("date").dt.month().alias("dt_m"),
+        )
+        .drop("date")
+    )
+
+    # Return dataframe
     return df
 
 
@@ -193,6 +239,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         path_203 = PATHS[0]
         path_539 = PATHS[1]
+        path_tcf = PATHS[2]
     else:
         path_203 = sys.argv[1]
         path_539 = sys.argv[2]
@@ -202,11 +249,12 @@ if __name__ == "__main__":
     names_539 = load_encoding(pathlib.Path().resolve() / "eta_539_names.json")
     df_203 = clean_eta_203(path_203, names_203)
     df_539 = clean_eta_539(path_539, names_539)
+    df_tcf = clean_tcf_data(path_tcf)
 
     # Write to db
     path_db = pathlib.Path(DB)
     if not path_db.is_file():
-        print("Made it")
         make_db(DB, SCHEMA)
     load_data(DB, df_203, "ui_demos")
     load_data(DB, df_539, "ui_cts")
+    load_data(DB, df_tcf, "unemp")

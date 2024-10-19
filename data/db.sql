@@ -42,8 +42,8 @@ CREATE TABLE ui_cts (
     ct_wks_x Int,
     ct_wks_eb Int,
     rt_recip real,
-    rt_emp_cv real,
-    rt_unemp real,
+    ct_emp_cv real,
+    ct_unemp real,
     ind_eb varchar(1),
     dt_eb date,
     PRIMARY KEY (st, dt_m, dt_y)
@@ -53,9 +53,8 @@ CREATE TABLE unemp (
     st varchar(2) NOT NULL,
     dt_m int NOT NULL,
     dt_y int NOT NULL,
-    ct_u3 int, 
-    ct_u6 int,
-    ct_lf_u3 int, 
-    ct_lf_u6 int,
+    ct_u3_12mo int, 
+    ct_wks_12mo int,
+    rt_recip real,
     PRIMARY KEY (st, dt_m, dt_y)
 );
