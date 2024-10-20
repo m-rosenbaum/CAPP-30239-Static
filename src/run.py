@@ -16,6 +16,7 @@ from charts.c3 import c3
 from charts.c4 import c4
 from charts.c5 import c5
 from charts.c6 import c6
+from charts.c7 import c7
 
 # Run data processing and chart generation
 if __name__ == "__main__":
@@ -28,6 +29,13 @@ if __name__ == "__main__":
     fed = load_fed()
     st = load_st()
     elig_df, ic_df, claimed_df = load_example_ui_data()
+    filt_2019 = (pl.col("dt_m") == 12, pl.col("dt_y") == 2019)
+
+    # Load states
+    # Ref for handling GEOJSON: https://stackoverflow.com/questions/67283970/altair-choropleth-adding-values-associated-with-each-county-to-the-map
+    # Ref: "https://raw.githubusercontent.com/vega/vega-datasets/master/data/us-10m.json"
+    url = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"
+    geo = alt.topo_feature(url, "states")
 
     # Run each chart sequentially
     c1 = c1(fed.filter(pl.col("date") < pl.date(year=2020, month=1, day=1)))
@@ -39,14 +47,16 @@ if __name__ == "__main__":
     c4 = c4(st)
     c5 = c5(st)
     c6 = c6(st)
+    c7 = c7(st, geo, fed, filt_2019)
 
     # Run and save
-    save_list = [c1, c2, c3, c4, c5, c6]
-    skip_list = [1]  # Issues with date coersion out of Jupyter
+    save_list = [c1, c2, c3, c4, c5, c6, c7]
+    skip_list = [1, 7]  # Issues with date coersion out of Jupyter
     i = 0
     for chart in save_list:
         # Advance chart name counter
         i += 1
+        print("Working on: ", i)
         if i in skip_list:
             continue
 
