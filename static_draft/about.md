@@ -18,17 +18,18 @@ I am developing 9 plots across 2 categories.
 
 ### What is recipiency?
 1. (Single line plot) Federal Recipiency rate: This shows the federal recipiency rate for unemployment insurance since 2006, up until 2020. It aims to introduce the concept of recipiency of unemployment insurance and illustrate that not everyone gets benefits.
-2. (Binned historgram(?) with line): Initial claims: This plot aims to introduce more information about what's being counted by showing new claims for unemployment insurance on the same graph. It starts to complicate what the data is showing by saying recipiency is just one dimension.
-3. (Highlit line plot) State variation line plot: This adds in 51 lines to the plot to show that there's a lot of variation in recipiency rates that goes into the federal average. Again, this aims to reinforce that this isn't just a quick fix, and some areas the problem is more acute than others.
-4. (Bar) State count: Since everything so far has been in rates, I will show the actual counts of the insured unemployed at a fixed time point (12/2022). This will illustrate that rates are misleading because the vast majority of UI claims actually occur in 3 states: NY, TX, and CA.
+2. (Scatterplot) What is recipiency? This shows a few example people using synthetic data to describe what UI recipiency looks like on a week-to-week basis.
+    - Note: this is a final plot. But individual claim utilization behavior is protected, so individual data cannot be collected.
+3. (Stacked bar) State count: Since everything so far has been in rates, I will show the actual counts of the insured unemployed at a fixed time point (12/2022). This will illustrate that rates are misleading because the vast majority of UI claims actually occur in 3 states: NY, TX, and CA.
+4. (Highlit line plot) State variation line plot: This adds in 51 lines to the plot to show that there's a lot of variation in recipiency rates that goes into the federal average. Again, this aims to reinforce that this isn't just a quick fix, and some areas the problem is more acute than others.
 
-### Why does recipiency not make sense?
+### What causes changes in recipiency?
 5. (Line plot, with colored top): Zoom in on COVID and states and show that recipiency jumps way above 100% during COVID. By extending the graph into 2020-2023, the rates fully stop making sense, because more than 100% of eligible people start receiving benefits.
-6. (Bar and line plot) Calculation of rates. This aims to visualize how the recipiency rate is calculated by showing a line of the number of insured unemployed and the U-3 unemployed counts at the federal level. It takes the mean value across a time point of the U-3 rate and then divides a different time point to generate a range, resulting in a percentage.
-    - This may be cut depending on data difficulties as it relies on the ETA-539 report with suspect data.
-7. (Line graph): Show the states lines again in a different color, using the Bell et. al., 2021 preferred metric to better show what happens. I'll include a colored dot at the end (just 12/2022) to highlight the point in Chart 8.
-8. (Lollipop plots showing change): Alternative formulation lollipop for each state, showing the change at 12/2022 between the two metrics. 
-9. (Chloropleth sqaures map) Mapping recipiency compared to average across the country to start to introduce geographic variation. It shows that some of the difference is related to different states. This loosely maps onto political leaning, so will be obviously interpretable, but I will not plot political leaning.
+6. (Lasagna plot): Goes back to the states identified in 4 to highlight how their recipiency changed over COVID, using color to show the intensity. It highlights that there's a key break around the policy change.
+
+### What can we do about it?
+7. (Chloropleth sqaures map) Mapping recipiency compared to average across the country to start to introduce geographic variation. It shows that some of the difference is related to different states. This loosely maps onto political leaning, so will be obviously interpretable, but I will not plot political leaning.
+8. (Faceted Density Plot): Shows the recipiency densities for the 6 states highlighted as key to the US UI system earlier. New Jersey jumps out as way higher than everyone else. I will describe in writing how NJ's administrative approaches have increased recipiency -- it's not just policy, but it's implrementation too.
 
 ## What form do you envision your final deliverable taking? (An article incorporating the images? A poster? An infographic?)
 An article
