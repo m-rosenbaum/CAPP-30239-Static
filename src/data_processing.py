@@ -152,3 +152,24 @@ def load_example_ui_data():
     claimed_df = pl.DataFrame({"y": claimed_y, "claimed": claimed_x})
 
     return elig_df, ic_df, claimed_df
+
+
+def subset_sts(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    Command to subset states to the top-7 UI states by market:
+        CA, FL, IL, NJ, NY, PA, TX
+    Aims to clena up the run code.
+
+    Input: Dataframe of state recipiency rates with column "st" for states.
+
+    Returns: Subset pandas dataframes.
+    """
+    return df.filter(
+        (pl.col("st") == "PA")
+        | (pl.col("st") == "CA")
+        | (pl.col("st") == "IL")
+        | (pl.col("st") == "NJ")
+        | (pl.col("st") == "TX")
+        | (pl.col("st") == "NY")
+        | (pl.col("st") == "FL")
+    )

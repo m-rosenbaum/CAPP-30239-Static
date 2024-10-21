@@ -9,7 +9,7 @@ alt.data_transformers.enable("vegafusion")
 
 # Import graph code
 from charts.theme_unemp import unemp_theme
-from data_processing import load_fed, load_st, load_example_ui_data
+from data_processing import load_fed, load_st, load_example_ui_data, subset_sts
 from charts.c1 import c1
 from charts.c2 import c2
 from charts.c3 import c3
@@ -17,6 +17,7 @@ from charts.c4 import c4
 from charts.c5 import c5
 from charts.c6 import c6
 from charts.c7 import c7
+from charts.c8 import c8
 
 # Run data processing and chart generation
 if __name__ == "__main__":
@@ -48,9 +49,10 @@ if __name__ == "__main__":
     c5 = c5(st)
     c6 = c6(st)
     c7 = c7(st, geo, fed, filt_2019)
+    c8 = c8(subset_sts(st))
 
     # Run and save
-    save_list = [c1, c2, c3, c4, c5, c6, c7]
+    save_list = [c1, c2, c3, c4, c5, c6, c7, c8]
     skip_list = [1, 7]  # Issues with date coersion out of Jupyter
     i = 0
     for chart in save_list:
