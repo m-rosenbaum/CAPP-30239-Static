@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
         # Get parent directory
         root = os.path.join(os.path.abspath(""), os.path.pardir)
-        loc = os.path.join(root, "static_draft", f"c{i}.svg")
+        loc = os.path.join(root, "static_final", f"c{i}.svg")
 
         # Save to parent dir
         chart.save(f"{loc}")
