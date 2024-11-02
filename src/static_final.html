@@ -12,20 +12,65 @@
 			<h1 id="">How many people miss out on unemployment insurance?</h1>
 		</div>
 
-		<!-- Introduction -->
-		<div>
+		<!-- Introduction: Recipiency measurement -->
+		<div class="text-section">
 			<p class="main-text">
 				Among U.S. benefits programs, researchers have spent a lot of time trying to understand why eligible recipients don't actually take up the benefits they are entitled to. <a href="https://www.nber.org/papers/w10488">Low take-up is severe</a> for many programs: <a href="https://www.bls.gov/news.release/uisup.nr0.htm">26 percent</a> of potential recipients took up unemployment insurance (UI) in 2022. This is not a new fact. Since the early 2000s, recipiency rates, what they call who receives benefits of those who are unemployed, has not changed all that much. 
 			</p>
-			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c1.svg?token=GHSAT0AAAAAACXAZVPEBW2E4RFM6ANZGGVUZZGQ3MQ" alt="Unemployment insurance has been " />
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c1.svg?token=GHSAT0AAAAAACXAZVPEGTBZICAUDDTDT5EOZZGV4SA" alt="Unemployment insurance recipiency rates are about 30 percent of unemployment since 2000" />
 			<p class="main-text">
 				Why is this? Research has provided a lot of answers to plausible reasons why individuals don't take up benefits - people may not be aware they are eligible, applications are hard to complete, there's stigma against taking government handouts, risk of paying back benefits if you mistakenly or purposefully claimed benefits you weren't entitled to can be severe. All of this and more contributes. But even just figuring out who is entitled, granted as a right by the law, is a complicated question. 
 			</p>
 			<p class="main-text">
 				Some history on these programs can be helpful. Take unemployment insurance. Unemployment insurance was established <a href="https://www.cbpp.org/research/introduction-to-unemployment-insurance">by the 1935 Social Security Act</a>. Although UI is authorized by the federal government, each state administers a separate UI program through a state workforce agency. Unemployment insurance was originally established to partially replace income for people who lose their jobs due to changes in the economy, not their own fault. Over the past century, it has grown and changed. Some core features have stayed the same though: the program is funded by taxes on employers and paid for by the federal government; the United States Department of Labor (USDOL) Employment and Training Administration (ETA) oversees these programs and provides administrative funding to states to administer it. In each state, individual recipients of UI must meet eligibility criteria defined by each state workforce agency. All recipients (i) must have earned a sufficient income from an eligible employer in a specific time period and (ii) have become involuntarily unemployed through no fault of their own. For example, <a href="https://oui.doleta.gov/unemploy/pdf/uilawcompar/2023/complete.pdf">Nevada's monetary eligibility requirements</a> are described as "1.5 [times the] high-quarter wages in the base period and $400 in the high quarter [or] of wages in 3 of the 4 quarters in the base period and $400 in the high quarter [of the base year]." 
 			</p>
+			<p class="main-text">
+				Since each persons' eligibility is based on when they earned their income over the past however long and the individual circumstances they lost their job, it's hard to know if an unemployed person is actually eligible. There's no centralized database with a standardized measure of if a job separation is "for no fault of their own." There's also no centralized database of the eligible unemployed. The US uses <a href="https://www.bls.gov/lau/lauov.htm">survey-derived estimates</a> to measure unemployment. With unemployment insurance, the department of labor assumes that about half of the unemployed are probably eligible. This measure <a href="https://www.capolicylab.org/wp-content/uploads/2022/08/CPL-Data-Point-on-Recipiency-in-California.pdf">undercounts</a> some people who may be eligible but only partially employed and <a href="https://www.bls.gov/news.release/uisup.nr0.htm">overcounts</a> people who might not be eligible.
+			</p>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Microsoft_To-Do_icon.svg" alt="Unemployment recipiency is measured as a percentage of those unemployed"/>
 		</div>
 
-		<!-- Section 1: -->
+		<!-- Section 1: Measurement Problems-->
+		<div>
+			<h2>Why don't we measure recipiency well?</h2>
+			<p class="main-text">
+				Why do we not collect this information systematically? There's many answers to that questions. One area is really important. Getting unemployment insurance is actually a two-stage process, where applicants have to file a claim and then claim the benefit each week. Here's what applying for unemployment insurance might look like for someone who recently got laid off. Let's call her Andrea:
+			</p>
+		</div>
+		<div class="example">
+			<p class="example-text">
+				Applications to UI are generally filed through an online application these days. Andrea might would start by submitting an initial claim to be processed on the web portal. She'd then not hear anything for a few days or weeks while the state workforce agency determined monetary and nonmonetary eligibility under state law. This often involves the agency first verifying Andrea's income with state and federal tax information and then verifying the context in which Andrea lost her job with her last company.
+			</p>
+			<p class="example-text">
+				After, she'd receive instructions to file her weekly (or biweekly, depending on where she lives) certifications to validate that she was eligible each week to receive payment. These certifications often include attesting to eligibility criteria that recipients are able and available to accept work, that they have accomplished state-specific work requirements, and they do not have too much income during the benefit year or certification period. All of these criteria have specific legal definitions that may not be clear like being "able and available" for work. Similar to the initial claim, determinations that arise from questions of eligibility can lead to Andrea not receiving her benefits for a weekly period.
+			</p>
+			<p class="example-text">
+				While Andrea has started filing her weekly certifications, state workforce agency staff are making a formal determination about eligibility based on the initial claim information. If they don't have enough information they're tasked with collecting facts ("fact-finding") from relevant parties, like Andrea's old company. This determination includes adjudicating between differing claims from individuals and employers based on state criteria. Applicants, or claimants, can then appeal any determination on the initial claim. 
+			</p>
+			<p class="example-text">
+				Once an initial claim is determined eligible, Andrea would receive two letters, probably by mail, that said first she was "monetarily eligible" and gave her the amount of unemployment insurance she would receive each week. The second letter would tell her she was "non-monetarily eligible" to get benefits because her layoff was due to no fault of her own. 
+			</p>
+			<p>
+				Then, she'd start to get her benefits for each week she submitted a valid weekly certification.
+			</p>
+		</div>
+		<div>
+			<p class="main-text">
+				Claimants' recipiency changes on a week-by-week basis depending on how long people are unemployed, how often they complete their weekly certifications, and state law.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c2.svg?token=GHSAT0AAAAAACXAZVPFJVA7MIAVFGVLTHA6ZZGVN6Q" alt="4 examples of how people could take up benefits in different ways based on the state they live in, when they exhaust their benefits, and how regularly they complete their weekly certification."/>
+			<p class="main-text">
+				Unemployment insurance policy is often complex in different ways between states. It's also different complexity in each state. Each state program determines the specific meanings of those eligibility criteria. Similar to eligibility criteria, benefit characteristics vary between states. Each state writes, maintains, and determines what is in that initial claim application. Each state has <a href="https://oui.doleta.gov/unemploy/pdf/uilawcompar/2023/complete.pdf">different requirements</a> for applicants to be eligible and a different process to apply.
+			</p>
+			<p class="main-text">
+				This leads to drastically different recipiency outcomes.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c3.svg?token=GHSAT0AAAAAACXAZVPFJGSQB3SCD73RX6R4ZZGVXIQ" alt=""/>
+			<p class="main-text">
+				In the image above, each gray line is its own state. Although the federal average hasn't changed all that much in the past few decades, there's been a lot of changes in different states, some increasing, and some decreasing.
+			</p>
+		</div>
+
+		<!-- Section 2: State differences -->
 	</body>
 </html>
