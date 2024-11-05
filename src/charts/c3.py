@@ -26,7 +26,7 @@ def c3(fed, st) -> alt.Chart:
                 field="date", lt=alt.DateTime(year=2020, month=1, day=1)
             )
         )
-    )
+    ).properties(width=600)
 
     # Create state underlay layer
     c3_st = (
@@ -37,7 +37,7 @@ def c3(fed, st) -> alt.Chart:
                 subtitle="Unemployment insurance recipiency by state, annual moving average: 2006-2019",
             ),
         )
-        .mark_line(color="#33333340", strokeWidth=1)
+        .mark_line(color="#33333330", strokeWidth=0.75)
         .encode(
             alt.X("date:T").title(None),
             alt.Y("rt_recip", scale=alt.Scale(domain=[0, 1])),
@@ -49,7 +49,7 @@ def c3(fed, st) -> alt.Chart:
                 field="date", lt=alt.DateTime(year=2020, month=1, day=1)
             )
         )
-    )
+    ).properties(width=600)
 
     # Stack graphs appropriately
     c3 = c3_st + c3_fed
