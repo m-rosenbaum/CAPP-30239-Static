@@ -1,4 +1,5 @@
 import altair as alt
+import polars as pl
 
 
 def c7(st, geo, fed, filt) -> alt.Chart:
@@ -13,31 +14,37 @@ def c7(st, geo, fed, filt) -> alt.Chart:
 
     Returns (Chart): Chart object
     """
+    # Data processing
+    st = st.filter(filt)
+    fed = fed.filter(filt)
+    st = st.drop("date")  # don't need date
+    fed = fed.drop("date")
+
     # Ref from: https://altair-viz.github.io/gallery/choropleth.html
     c7 = (
         alt.Chart(
             geo,
             title=alt.Title(
-                "Recipiency varies geographically.",
-                subtitle="Average recipiency in 2019, annually smoothed. Orange is below average, blue is above average",
+                "Southern states have below average recipiency",
+                subtitle="Average recipiency in 2019",
             ),
         )
         .mark_geoshape()
         .transform_lookup(
             lookup="id",
-            from_=alt.LookupData(st.filter(filt), "id", ["rt_recip"]),
+            from_=alt.LookupData(st, "id", ["rt_recip"]),
         )
         .encode(
             alt.Color(
                 "rt_recip:Q",
                 scale=alt.Scale(
-                    domain=[0, fed.filter(filt)["rt_recip"].mean(), 0.60],
-                    range=["#BF8700", "White", "#0076BF"],
+                    domain=[0, 0.60],  # fed.filter(filt)["rt_recip"].mean(),
+                    range=["#33333310", "#0076BF"],
                 ),
             ).legend(title="Recipiency Rate", format="%")
         )
         .project(type="albersUsa")
-        .properties(width=600, height=300)
+        .properties(width=800, height=400)
     )
 
     # Save chart
