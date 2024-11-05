@@ -16,13 +16,12 @@ def c8(st) -> alt.Chart:
     # Establish scaling parameters
     step = 30
     overlap = 1
+    st_mean = st["rt_recip"].mean()
 
     c8 = (
         alt.Chart(st)
         .transform_density(
-            "rt_recip",
-            groupby=["st"],
-            as_=["rt_recip", "density"],
+            "rt_recip", groupby=["st"], as_=["rt_recip", "density"], extent=[0, 1]
         )
         # Below doesn't work
         # .transform_aggregate(mean_rt_recip="mean(rt_recip)", groupby=["st"])
@@ -45,7 +44,7 @@ def c8(st) -> alt.Chart:
             ),
         )
         .encode(
-            alt.X("rt_recip:Q", scale=alt.Scale(domain=[0, 1]))
+            alt.X("rt_recip:Q", scale=alt.Scale(domainMin=0, domainMax=1))
             .title("Recipency Rate")
             .axis(format="%"),
             alt.Y("density:Q").axis(None).scale(range=[step, -step * overlap]),
@@ -65,5 +64,11 @@ def c8(st) -> alt.Chart:
         )
         .configure_facet(spacing=0)
     )
+
+    # rule = (
+    #    alt.Chart()
+    #    .mark_rule(color="#203440", strokeWidth=1)
+    #    .encode(x=alt.X(datum=st_mean))
+    # )
 
     return c8
