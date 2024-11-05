@@ -11,13 +11,24 @@ def c2(elig, ic, claimed):
             elig,
             title=alt.Title(
                 "Filing for UI isn't something you do just once, it's something you have to do every week",
-                subtitle="These are 4 cases of how receiving UI might look different",
+                subtitle="Individuals first must be eligible for UI, then file their initial claim, then file each week",
             ),
         )
         .mark_point(size=100, filled=True, color="#33333340")
         .encode(
-            alt.X("elig").title("Week of Unemployment").axis(domain=False),
-            alt.Y("y").title(None).axis(ticks=False, labels=False),
+            alt.X("elig")
+            .title("Week of Unemployment")
+            .axis(domain=False, ticks=True, values=range(1, 27)),
+            alt.Y("y")
+            .title(None)
+            .axis(
+                domain=False,
+                ticks=False,
+                grid=False,
+                labels=True,
+                values=[4, 2, 3, 1],
+                labelPadding=10,  # Adding padding for the manual changes
+            ),
         )
     )
 
@@ -64,7 +75,7 @@ def c2(elig, ic, claimed):
             x=alt.datum(3.3),
             y=alt.datum(3.5),
             text=alt.datum(
-                "A files weekly and receives benefits each week until they exhaust their benefits after 26 weeks"
+                "Abigail files weekly and receives benefits each week until they exhaust their benefits after 26 weeks"
             ),
         ),
     )
@@ -98,7 +109,7 @@ def c2(elig, ic, claimed):
             x=alt.datum(13.3),
             y=alt.datum(2.5),
             text=alt.datum(
-                "B lives in Florida, which only provides 12 weeks of benefits"
+                "Bryan lives in Florida, which only provides 12 weeks of benefits"
             ),
         ),
     )
@@ -132,7 +143,7 @@ def c2(elig, ic, claimed):
             x=alt.datum(5.1),
             y=alt.datum(1.5),
             text=alt.datum(
-                "C doesn't file their weekly certification week 4, and therefore doesn't receve benefits"
+                "Carlos doesn't file their weekly certification week 4, and therefore doesn't receve benefits"
             ),
         ),
     )
@@ -165,7 +176,7 @@ def c2(elig, ic, claimed):
         .encode(
             x=alt.datum(2.0),
             y=alt.datum(0.5),
-            text=alt.datum("D never files an initial claim"),
+            text=alt.datum("Divya never files an initial claim"),
         ),
     )
 
