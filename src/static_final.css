@@ -1,0 +1,15 @@
+/* 
+    Put width at max 800 px in the middle of the page
+    Ref: https://stackoverflow.com/a/22086429
+*/
+.text-section {
+    width: 800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.text-section .example {
+    width: 780px;
+    margin-left:auto;
+    margin-right:auto;
+}

@@ -3,6 +3,7 @@
 	<head>
         <!-- Style sheet below -->
         <link rel="stylesheet" href="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/src/bulma.css?token=GHSAT0AAAAAACXAZVPFGSSF5JUCI7I4W5IEZZFP7WQ" />
+		<link rel="stylesheet" href="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/src/static_final.css" />
 		<!-- Document metadata-->
 		<title>Unemployment Insurance Uptake</title>
 	</head>
@@ -31,8 +32,8 @@
 		</div>
 
 		<!-- Section 1: Measurement Problems-->
-		<div>
-			<h2>Why don't we measure recipiency well?</h2>
+		<div class="text-section">
+			<h2 class="section-head">Why don't we measure recipiency well?</h2>
 			<p class="main-text">
 				Why do we not collect this information systematically? There's many answers to that questions. One area is really important. Getting unemployment insurance is actually a two-stage process, where applicants have to file a claim and then claim the benefit each week. Here's what applying for unemployment insurance might look like for someone who recently got laid off. Let's call her Andrea:
 			</p>
@@ -54,7 +55,7 @@
 				Then, she'd start to get her benefits for each week she submitted a valid weekly certification.
 			</p>
 		</div>
-		<div>
+		<div class="text-section">
 			<p class="main-text">
 				Claimants' recipiency changes on a week-by-week basis depending on how long people are unemployed, how often they complete their weekly certifications, and state law.
 			</p>
@@ -72,5 +73,58 @@
 		</div>
 
 		<!-- Section 2: State differences -->
+		<div class="text-section">
+			<h2 class="section-head">Each state is making their own decisions</h2>
+			<p class="main-text">
+				Benefits agencies have control over how policies are implemented and are often evaluated on recipiency through federal and state oversight. Although recent federal memoranda describe a need for benefits programs to reduce administrative burden, state workforce agencies are often limited in funding to make changes to programs. Determining what investments increase social welfare is a challenge for agency administrators, especially when balanced with alternative focuses on reducing fraud. Beyond just changing the proportion of people that can apply, policy and administration lead to drastically different amounts of people that can apply.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c3.svg?token=GHSAT0AAAAAACXAZVPFJGSQB3SCD73RX6R4ZZGVXIQ" alt = "Recipinecy rate since 2006 in blue, with states' individual recipiency shown below in gray."/>
+			<p class="main-text">
+				In, 2023, <em>XY</em> states made up <em>XY%</em> of unemployment claims. It's not hyperbolic to say that these states are the US unemployment system for the most part. 
+			</p>
+		</div>
+
+		<!-- Section 3: COVID and Recipiency-->
+		<div class="text-section">
+			<h2 class="section-head">COVID changed things</h2>
+			<p class="main-text">
+				As a reminder, unemployment insurance is a mix between federal policy that changes automatically with the economy, state decisions about their own las and eligibility, and how programs are administered: if the website is easy to navigate on your phone, if navigators can help you with your app, if there's enough staff to answer the phones. All these moving parts make it easier or harder to get UI.
+			</p>
+			<p class="main-text">
+				During the pandemic, the US made a huge change to how unemployment insurance works. Whether this was a valid or effective decision to help people in need is up for debate. It does show us at least one thing, that recipiency isn't fixed. Due to changes in who was eligible and how to show your eligibility, recipiency skyrocketed - reaching above 100% of the unemployed population. Some of this is fraud, but that's less relevant for the point at hand. This is evidence that you can get more people into the unemployment system.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c3.svg?token=GHSAT0AAAAAACXAZVPFJGSQB3SCD73RX6R4ZZGVXIQ" alt = "Recipinecy rate by state since 2006, with states' individual recipiency shown below in gray. Months with an average lagged recipiency above 100 percent are highlighted in orange"/>
+			<p class="main-text">
+				Although this seems obvious, it's important to recognize: recipiency isn't fixed around 30 percent of unemployed workers. It's a choice that states and the federal government has made about how people should take up benefits. 
+			</p>
+			<p class="main-text">
+				This is changing. In the past few years, the federal government has provided guidance to states that they should make it easier to get unemployment benefits. These memos and letters have focused on what's called equitable access to the benefits. US DOL has been focused on requiring that state workforce agencies allow “the consistent and systematic fair, just, and impartial treatment of all beneficiaries of, applicants to, and participants in the UI program” (U.S. Department of Labor, 2023). These mandates aren’t just an extra requirement. A lot of money was made available after the COVID-19 pandemic for state workforce agencies to respond to these concerns: <a href="https://www.dol.gov/agencies/eta/advisories/unemployment-insurance-program-letter-no-23-21">$260 million for projects that improve equitable access</a> to benefits and <a href="https://www.dol.gov/agencies/eta/advisories/unemployment-insurance-program-letter-no-02-22">$200 million for changes</a> following a consultative assessment of state workforce agencies' capabilities (US DOL, 2021; US DOL, 2021). But, many of these programs have not been rigorously evaluated to see if they work.
+			</p>
+		</div>
+
+		<!-- Section 4: Predictors of Access-->
+		<div class="text-section">
+			<h2 class="section-head">If recipiency can change, what's happening in states with higher recipiency?</h2>
+			<p class="main-text">
+				There's a lot of theories about why recipiency varies so much. In recent years, academic research has looked at how to improve access to benefits. There's a lot of approaches that states have tried in administering the program and also a lot of differences in policy. This patchwork of policy and implementation has led to some outcomes that look like a lot of American history and politics.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c3.svg?token=GHSAT0AAAAAACXAZVPFJGSQB3SCD73RX6R4ZZGVXIQ" alt = "A map of state recipiency rates"/>
+			<p class="main-text">
+				Northern states have tended to make it easier to get unemployment insurance benefits, and as such have better recipiency rates. These differences are likely caused by lower take-up and more constrictive policy. Black potential claimants, in particular, <a href="https://www.nber.org/papers/w29595">take up benefits less</a> than other potential claimants, especially in the South. 
+			</p>
+			<p class="main-text">
+				But states also vary over time. If we look at the bigger states from earlier, we can see how often they have a certain recipiency rate for each month they report it. If a rate is more common, that rate will be a larger bump in the graph below. If a state's recipiency rate doesn't change much in the past two decades, it would be a really tall bump. If the state's changed a lot, it would spread out.
+			</p>
+			<img src="https://raw.githubusercontent.com/m-rosenbaum/CAPP-30239-Static/refs/heads/main/static_draft/c3.svg?token=GHSAT0AAAAAACXAZVPFJGSQB3SCD73RX6R4ZZGVXIQ" alt = "Kernel density plots of monthly smoothed recipiency between 2006 and 2023. These recipiency rates"/>
+			<p class="main-text">
+				What's happening in New Jersey? Over the past two decades, New Jersey has had a lot of differences in its recipiency rate. The answer is a combination of policy and implementation. Alongside some changes to unemployment insurance law, the New Jersey Office of Innovation worked with NJ DOL to modernize their system with a focus on making it easier to use for residents. Since 2022, <a href="https://innovation.nj.gov/projects/ui-application-redesign/">NJ DOL has had</a> a new app, SMS reminders, mobile-accessibility, and plain language descriptions of the law. The impacts are striking. UI is easier to access, and you can see it in the recipiency rate.
+			</p>
+			<p class="main-text">
+				That gets us back to the original question: How many people miss out on unemployment insurance? We can't necessarily get that answer and certainly can't use the recipiency rate to get. One solution would be to get better information on who isn't getting benefits. A better recipiency rate would help states make decisions to help their residents. Turning the lights on in a dark room lets you navigate to where you want to go.
+			</p>
+			<p class="main-text">
+				Even if the recipiency rate is a flawed measure at best, states can still figure out how to make sure that the people who have paid into unemployment insurance actually get their benefits. New Jersey has done it. And New Jersey is an indication that when they do, we can see it in the recipiency rate.
+			</p>
+		</div>
 	</body>
 </html>
