@@ -21,7 +21,7 @@ def c4(st) -> alt.Chart:
         )
         .mark_bar(color="#33333360")
         .encode(
-            alt.X("st:N").title("State").sort(field="ct_u3_12mo"),
+            alt.X("st:N").title("State").sort(field="ct_u3_12mo", order="descending"),
             alt.Y("ct_u3_12mo:Q").title("Count"),
         )
     )
@@ -31,7 +31,7 @@ def c4(st) -> alt.Chart:
         alt.Chart(st)
         .mark_bar()
         .encode(
-            alt.X("st:N").title("State").sort(field="ct_u3_12mo"),
+            alt.X("st:N").title("State").sort(field="ct_u3_12mo", order="descending"),
             alt.Y("ct_wks_12mo:Q").title("Count"),
         )
     )
