@@ -15,11 +15,11 @@ def c5(st) -> alt.Chart:
         alt.Chart(
             st,
             title=alt.Title(
-                "This picture gets complicated. States had over 100 percent recipiency during the COVID-19 pandemic due to loosened eligibility requirements",
+                "States had over 100 percent recipiency during the COVID-19 pandemic due to changes in eligibiltiy policy",
                 subtitle="Recipiency rate by state: 2006-2024, annually smoothed",
             ),
         )
-        .mark_line(color="#33333340", strokeWidth=1)
+        .mark_line(color="#33333330", strokeWidth=0.75)
         .encode(
             alt.X("date:T").title(None),
             alt.Y("rt_recip", scale=alt.Scale(domain=[0, 1.5]))
@@ -35,14 +35,18 @@ def c5(st) -> alt.Chart:
     st_highlight = (
         alt.Chart(st)
         .mark_line(color="#BF4E00")
-        .encode(alt.X("date:T").title(None), alt.Y("rt_recip"), detail="st")
+        .encode(
+            alt.X("date:T").title(None),
+            alt.Y("rt_recip"),
+            detail="st",
+        )
         .transform_filter(alt.datum.rt_recip > threshold)
     )
 
     # Add in line
     rule = (
         alt.Chart()
-        .mark_rule(color="#203440", strokeWidth=2)
+        .mark_rule(color="#203440", strokeWidth=1.5)
         .encode(y=alt.Y(datum=threshold))
     )
     label = rule.mark_text(
