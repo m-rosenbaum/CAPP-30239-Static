@@ -1,4 +1,6 @@
 import altair as alt
+import polars as pl
+from datetime import datetime
 
 
 def c1(file) -> alt.Chart:
@@ -10,12 +12,12 @@ def c1(file) -> alt.Chart:
 
     Returns (Chart): Chart object
     """
-    return (
+    c1 = (
         alt.Chart(
-            file,
+            file.to_pandas(),
             title=alt.Title(
-                "Recipiency is how the Department of Labor measures what percentage of unemployed workers receive unemployment insurance.",
-                subtitle="Unemployment insurance recipiency, annual moving average: 2006-2019",
+                "Since 2007, about 30 percent of unemployed Americans receive unemployment insurance",
+                subtitle="Unemployment insurance recipiency, annual moving average: 2007-2019",
             ),
         )
         .mark_line(strokeWidth=3)
@@ -26,4 +28,16 @@ def c1(file) -> alt.Chart:
             .axis(format="%")
             .title("Recipiency rate"),
         )
-    )
+    ).properties(width=600)
+
+    # text = alt.Chart(file).mark_text(
+    #    text='"Data: The Century Foundation (2024). Unemployment Data Dashboard"',
+    #    x=0,
+    #    y="height",
+    #    dx=0,
+    #    dy=30,
+    #    fontWeight="normal",
+    #    fontSize=8,
+    # )
+
+    return c1
