@@ -1,4 +1,5 @@
 import altair as alt
+import polars as pl
 
 
 def c5(st) -> alt.Chart:
@@ -11,6 +12,11 @@ def c5(st) -> alt.Chart:
 
     Returns (Chart): Chart object
     """
+    # Filtering to reduce the data
+    st = st.select("date", "rt_recip", "st")
+    st_filt = st.filter(pl.col("rt_recip") >= 1)
+    threshold = 1
+
     c5_st = (
         alt.Chart(
             st,
@@ -31,16 +37,15 @@ def c5(st) -> alt.Chart:
     )
 
     # Ref for highlighting: https://altair-viz.github.io/gallery/bar_chart_with_single_threshold.html
-    threshold = 1
     st_highlight = (
-        alt.Chart(st)
+        alt.Chart(st_filt)
         .mark_line(color="#BF4E00")
         .encode(
             alt.X("date:T").title(None),
             alt.Y("rt_recip"),
             detail="st",
         )
-        .transform_filter(alt.datum.rt_recip > threshold)
+        # .transform_filter(alt.datum.rt_recip > threshold)
     )
 
     # Add in line
@@ -49,7 +54,7 @@ def c5(st) -> alt.Chart:
         .mark_rule(color="#203440", strokeWidth=1.5)
         .encode(y=alt.Y(datum=threshold))
     )
-    label = rule.mark_text(
+    text = rule.mark_text(
         x="width",
         dx=-2,
         align="right",
@@ -58,5 +63,5 @@ def c5(st) -> alt.Chart:
         color="#BF4E00",
     )
 
-    c5 = c5_st + st_highlight + rule + label
+    c5 = c5_st + st_highlight + rule + text
     return c5
