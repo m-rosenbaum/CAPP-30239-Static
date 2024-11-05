@@ -1,9 +1,11 @@
+import json
 import os
 import sqlite3
 import polars as pl
 
 # Hardcoded values
 DB_PATH = os.path.join(os.path.abspath(""), os.path.pardir, "data", "ui_stats.db")
+ID_PATH = os.path.join(os.path.abspath(""), os.path.pardir, "data", "st_names.json")
 QUERY_ST = """
     SELECT 
         ui_cts.st as st, ui_cts.dt_m as dt_m, ui_cts.dt_y as dt_y, ct_wks_12mo, 
@@ -52,14 +54,6 @@ def query():
     cols = []
     for elem in c.description:
         cols.append(elem[0])
-
-    # No demos for now
-    # c.execute(demos_st)
-    # st_demos = c.fetchall()
-    # cols_demos = []
-    # for elem in c.description:
-    #    cols_demos.append(elem[0])
-
     conn.close()
 
     # Now convert to Polars object for plotting
@@ -78,6 +72,20 @@ def load_st():
     Returns (pl.DataFrame): state_level data frame
     """
     st_cts_df = query()
+
+    # Attach FIPS Codes as strings with leading 0s
+    st_names = json.load(open(ID_PATH))
+    st_cts_df = st_cts_df.with_columns(
+        pl.col("st").replace(st_names).cast(int).alias("id")
+    )
+
+    # Reformat all data in format needed for output
+    st_cts_df = st_cts_df.with_columns(
+        pl.col("id").cast(pl.Utf8).str.zfill(2).alias("id"),
+        pl.col("date").cast(pl.Date),
+    )
+
+    # Return with attached FIPS Codes
     return st_cts_df
 
 
@@ -88,6 +96,9 @@ def load_fed():
     Returns (pl.DataFrame): federal-level data frame
     """
     st_cts_df = load_st()
+    st_cts_df = st_cts_df.with_columns(
+        pl.col("date").cast(pl.Date),
+    )
 
     # Aggregate to the month-level
     fed_cts_df = (

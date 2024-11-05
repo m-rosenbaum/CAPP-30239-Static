@@ -47,13 +47,13 @@ if __name__ == "__main__":
     )
     c4 = c4(st)
     c5 = c5(st)
-    c6 = c6(st)
+    # c6 = c6(st) # Dropping this chart
     c7 = c7(st, geo, fed, filt_2019)
     c8 = c8(subset_sts(st))
 
     # Run and save
-    save_list = [c1, c2, c3, c4, c5, c6, c7, c8]
-    skip_list = [1, 7]  # Issues with date coersion out of Jupyter
+    save_list = [c1, c2, c3, c4, c5, c7, c8]
+    skip_list = [5]  # Issues with date coersion out of Jupyter
     i = 0
     for chart in save_list:
         # Advance chart name counter
